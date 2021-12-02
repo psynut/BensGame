@@ -1,3 +1,3 @@
 import {diceRoll} from './lib/dice.js'
 
-console.log(dice.diceRoll());
+console.log(diceRoll());
