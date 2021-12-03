@@ -1,0 +1,36 @@
+/*
+F9F3DF
+FDFCE5
+D7E9F7
+F4D19B
+*/
+
+body{
+  background-color: #F9F3DF;
+}
+
+h1{
+  color: brown;
+}
+
+p{
+  color: black;
+}
+
+.title{
+  text-align: center;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.grayscale { filter: grayscale(100%); }
