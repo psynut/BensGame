@@ -1,6 +1,9 @@
 var dicePics = document.querySelectorAll(".dice");
 var scoreDisplays = document.querySelectorAll(".score");
 
+var diceRollClips = [new Audio("./sounds/diceroll1.mp3"), new Audio("./sounds/diceroll2.mp3")];
+var roundWinClips = [new Audio("./sounds/round_win1.mp3"), new Audio("./sounds/round_win2.mp3"), new Audio("./sounds/round_tie.mp3")];
+
 const whiteDiePics = ["./images/white_dice1.png", "./images/white_dice2.png", "./images/white_dice3.png", "./images/white_dice4.png", "./images/white_dice5.png", "./images/white_dice6.png"];
 const greenDiePics = ["./images/green_dice1.png", "./images/green_dice2.png", "./images/green_dice3.png", "./images/green_dice4.png", "./images/green_dice5.png", "./images/green_dice6.png"];
 
@@ -34,12 +37,13 @@ class Player {
   gamesWon = 0;
   rollDice() {
     if (this.ready === true) {
+      let randomNo = Math.floor(Math.random()*(diceRollClips.length));
+      console.log(randomNo);
+      diceRollClips[randomNo].play();
       this.dice.forEach((die) => {
         die.roll();
-        console.log("Rolled a " + die.number);
       });
       this.ready = false;
-      console.log(this.ready);
     }
   }
 }
@@ -82,12 +86,23 @@ function compareRolls() {
 const player1 = new Player();
 const player2 = new Player();
 
+
+//If adjustScore is positive player1 won round
+//If adjustScore is negative player2 won round_tie
+//If adjustScore is 0 - it's a tie.
 function endTurn(adjustScore) {
   setTimeout(() => {
+    if(adjustScore>0){
+      animatePlayer1Score(adjustScore);
+      roundWinClips[0].play();
+    } else if (adjustScore<0){
+      animatePlayer2Score(-adjustScore);
+      roundWinClips[1].play();
+    } else {
+      roundWinClips[2].play();
+    }
     player1.ready = true;
     player2.ready = true;
-    console.log(player1.ready + " " + player2.ready);
-    console.log("Ready to play next round!");
     player1.score += adjustScore;
     player2.score -= adjustScore;
     let player1String = "Score: " + player1.score;
@@ -101,6 +116,7 @@ function endTurn(adjustScore) {
 function checkWin() {
   if (player2.score < 1) {
     document.querySelectorAll(".player1")[0].innerHTML = "Player 1 Wins! 🏆";
+    document.querySelectorAll(".player1")[0].classList.add("winner")
     document.querySelectorAll(".player2")[0].innerHTML = "Better Luck Next Time...";
     player1.ready = false;
     player2.ready = false;
@@ -108,9 +124,48 @@ function checkWin() {
   } else if (player2.score > 25) {
     document.querySelectorAll(".player1")[0].innerHTML = "...Better Luck Next Time";
     document.querySelectorAll(".player2")[0].innerHTML = "Player 2 Wins! 🏆";
+    document.querySelectorAll(".player2")[0].classList.add("winner")
     player1.ready = false;
     player2.ready = false;
     player2.gamesWon++;
+  }
+}
+
+function animatePlayer2Score(points){
+  let id = null;
+  let score = document.getElementById("player2-score-animation")
+  let pos = 0;
+  score.innerHTML = points.toString();
+  clearInterval(id);
+  id = setInterval(frame, 6);
+  function frame(){
+    if(pos ===80) {
+      clearInterval(id);
+      score.innerHTML = "&nbsp"
+    } else {
+      pos++
+      score.style.top = pos/2 + "%";
+      score.style.left = pos + "%";
+    }
+  }
+}
+
+function animatePlayer1Score(points){
+  let id = null;
+  let score = document.getElementById("player1-score-animation")
+  let pos = 0;
+  score.innerHTML = points.toString();
+  clearInterval(id);
+  id = setInterval(frame, 6);
+  function frame(){
+    if(pos ===80) {
+      clearInterval(id);
+      score.innerHTML = "&nbsp"
+    } else {
+      pos++
+      score.style.top = pos/2 + "%";
+      score.style.right = pos + "%";
+    }
   }
 }
 

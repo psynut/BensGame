@@ -5,15 +5,28 @@ D7E9F7
 F4D19B
 */
 
+/*
+font-family: 'Balsamiq Sans', cursive;
+font-family: 'Carter One', cursive;
+font-family: 'Luckiest Guy', cursive;
+*/
+
 body{
   background-color: #F9F3DF;
 }
 
 h1{
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 4em;
   color: brown;
 }
 
+h2, h3{
+  font-family: 'Carter One', cursive;
+}
+
 p{
+  font-family: 'Balsamiq Sans', cursive;
   color: black;
 }
 
@@ -29,6 +42,7 @@ p{
   float: left;
   width: 50%;
   text-align: center;
+  background-color: #F4D19B;
 }
 
 /* Clear floats after the columns */
@@ -36,4 +50,15 @@ p{
   content: "";
   display: table;
   clear: both;
+}
+
+.winner{
+  font-size: 2.5em;
+}
+
+#player2-score-animation, #player1-score-animation{
+  font-family: 'Carter One', cursive;
+  position: relative;
+  font-size: 4em;
+  color: red;
 }
