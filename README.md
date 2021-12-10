@@ -1,8 +1,10 @@
 ##### BensGame
 
-# Two Dice Game
+# [Two Dice Game](https://psynut.github.io/BensGame/)
 
 Ben made this relatively simple dice game up. Here's the webpage that allows two players to enjoy the game from the internet.
+
+https://psynut.github.io/BensGame/
 
 Rules of the game:
 Two players both start with 13 points at the start of the game.
