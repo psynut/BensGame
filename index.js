@@ -1,8 +1,11 @@
 var dicePics = document.querySelectorAll(".dice");
 var scoreDisplays = document.querySelectorAll(".score");
+var roundsDisplay = document.querySelectorAll(".rounds-count");
+var columns = document.querySelectorAll(".column");
 
 var diceRollClips = [new Audio("./sounds/diceroll1.mp3"), new Audio("./sounds/diceroll2.mp3")];
 var roundWinClips = [new Audio("./sounds/round_win1.mp3"), new Audio("./sounds/round_win2.mp3"), new Audio("./sounds/round_tie.mp3")];
+var newRoundClip = new Audio("./sounds/new_round.mp3");
 
 const whiteDiePics = ["./images/white_dice1.png", "./images/white_dice2.png", "./images/white_dice3.png", "./images/white_dice4.png", "./images/white_dice5.png", "./images/white_dice6.png"];
 const greenDiePics = ["./images/green_dice1.png", "./images/green_dice2.png", "./images/green_dice3.png", "./images/green_dice4.png", "./images/green_dice5.png", "./images/green_dice6.png"];
@@ -48,6 +51,21 @@ class Player {
   }
 }
 
+const player1 = new Player();
+const player2 = new Player();
+
+//const players = [player1, player2];
+
+//columns.forEach((column,index)=>{
+//  column.addEventListener("click", playerTurn(index+1));
+//});
+
+//function playerTurn(player){
+//  players[player-1].rollDice();
+//  dicePics[(player*2)-2].src = (whiteDiePics[players[player-1].dice[0].number - 1]);
+//  dicePics[(player*2)-1].src = (greenDiePics[players[player-1].dice[1].number - 1]);
+//}
+
 function compareRolls() {
   if (player1.ready === false && player2.ready === false) {
     console.log("compareRolls");
@@ -81,10 +99,6 @@ function compareRolls() {
     }
   }
 }
-
-
-const player1 = new Player();
-const player2 = new Player();
 
 
 //If adjustScore is positive player1 won round
@@ -121,6 +135,8 @@ function checkWin() {
     player1.ready = false;
     player2.ready = false;
     player1.gamesWon++;
+    roundsDisplay[0].innerHTML = player1.gamesWon.toString();
+    document.getElementById("reset").style.display = "inline";
   } else if (player2.score > 25) {
     document.querySelectorAll(".player1")[0].innerHTML = "...Better Luck Next Time";
     document.querySelectorAll(".player2")[0].innerHTML = "Player 2 Wins! 🏆";
@@ -128,7 +144,25 @@ function checkWin() {
     player1.ready = false;
     player2.ready = false;
     player2.gamesWon++;
+    roundsDisplay[1].innerHTML = player2.gamesWon.toString();
+    document.getElementById("reset").style.display = "block";
   }
+}
+
+function reset(){
+  console.log("Ran Reset");
+  document.querySelectorAll(".player1")[0].innerHTML = "Press \"Z\" to roll";
+  document.querySelectorAll(".player2")[0].innerHTML = "use \"?\" to roll";
+  document.querySelectorAll(".player1")[0].classList.remove("winner")
+  document.querySelectorAll(".player2")[0].classList.remove("winner")
+  player1.score = 13;
+  player2.score = 13;
+  player1.ready = true;
+  player2.ready = true;
+  scoreDisplays[0].innerHTML = player1.score.toString();
+  scoreDisplays[1].innerHTML = player2.score.toString();
+  document.getElementById("reset").style.display = "none";
+  newRoundClip.play();
 }
 
 function animatePlayer2Score(points){

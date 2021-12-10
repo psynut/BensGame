@@ -1,41 +1,60 @@
 /*
-F9F3DF
-FDFCE5
-D7E9F7
-F4D19B
+#F9F3DF
+#FDFCE5
+#D7E9F7
+#F4D19B
 */
-
 /*
 font-family: 'Balsamiq Sans', cursive;
 font-family: 'Carter One', cursive;
 font-family: 'Luckiest Guy', cursive;
 */
-
-body{
-  background-color: #F9F3DF;
+body {
+  background-color: #F4D19B;
 }
 
-h1{
+h1 {
   font-family: 'Luckiest Guy', cursive;
   font-size: 4em;
   color: brown;
 }
 
-h2, h3{
+h2, h3 {
   font-family: 'Carter One', cursive;
 }
 
-p{
+p {
   font-family: 'Balsamiq Sans', cursive;
   color: black;
 }
 
-.dice{
-  margin: 10px;
+button{
+  text-align: center;
+  font-family: 'Balsamiq Sans', cursive;
+  font-size: 2em;
+  padding: 10px;
+  background-color: brown;
+  color: white;
+  border: 2px solid black;
+  border-radius: 12px;
 }
 
-.title{
+.dice {
+  border-radius: 16px;
+  margin: 10px;
+  box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+}
+
+.instruction{
+  height: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.title {
+  padding: 1px;
   text-align: center;
+  background-color: #F9F3DF;
 }
 
 .column {
@@ -50,13 +69,19 @@ p{
   content: "";
   display: table;
   clear: both;
+  background-color: #F4D19B;
 }
 
-.winner{
+#reset{
+  text-align: center;
+  display: none;
+}
+
+.winner {
   font-size: 2.5em;
 }
 
-#player2-score-animation, #player1-score-animation{
+#player2-score-animation, #player1-score-animation {
   font-family: 'Carter One', cursive;
   position: relative;
   font-size: 4em;

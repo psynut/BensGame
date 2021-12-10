@@ -11,30 +11,44 @@
 </head>
 
 <body>
-  <h1 class="title">Two Dice Game</h1>
+  <div class="title">
+    <h1>Two Dice Game</h1>
+  </div>
+  <div>
   <div class="column">
     <h2>Player 1</h2>
-    <p class="player1">
-      Press "Z" to roll
-    </p>
-    <img class="dice" src="./images/white_dice1.png" width="150px" />
-    <span id="player2-score-animation">&nbsp</span>
-    <img class="dice" src="./images/green_dice1.png" width="100px" />
-    <h3 class="score">Score: 13</h3>
+    <div class="instruction">
+      <p class="player1">
+        Press "Z" to roll
+      </p>
+    </div>
+      <img class="dice" src="./images/white_dice1.png" width="150px" />
+      <span id="player2-score-animation">&nbsp</span>
+      <img class="dice" src="./images/green_dice1.png" width="100px" />
+      <h3 class="score">Score: 13</h3>
+      <br>
+      <h3>Rounds Won:<span class="rounds-count">0</span></h3>
+    </div>
+    <div class="column">
+      <h2>Player 2</h2>
+      <div class="instruction">
+        <p class="player2">
+          use "?" to roll
+        </p>
+      </div>
+      <img class="dice" src="./images/white_dice2.png" width="150px" class="grayscale" />
+      <span id="player1-score-animation">&nbsp</span>
+      <img class="dice" src="./images/green_dice2.png" width="100px" />
+      <h3 class="score">Score: 13</h3>
+      <br>
+      <h3>Rounds Won:<span class="rounds-count">0</span></h3>
+    </div>
   </div>
-  <div class="column">
-    <h2>Player 2</h2>
-    <p class="player2">
-      use "?" to roll
-    </p>
-    <img class="dice" src="./images/white_dice2.png" width="150px" class="grayscale" />
-    <span id="player1-score-animation">&nbsp</span>
-    <img class="dice" src="./images/green_dice2.png" width="100px" />
-    <h3 class="score">Score: 13</h3>
-  </div>
+    <div id = "reset">
+    <button type="button" name="button" onclick="reset();">Next Round</button>
+    </div>
 
-
-  <script src="index.js" charset="utf-8"></script>
+    <script src="index.js" charset="utf-8"></script>
 </body>
 
 </html>
