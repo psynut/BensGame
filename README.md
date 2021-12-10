@@ -4,8 +4,6 @@
 
 Ben made this relatively simple dice game up. Here's the webpage that allows two players to enjoy the game from the internet.
 
-https://psynut.github.io/BensGame/
-
 Rules of the game:
 Two players both start with 13 points at the start of the game.
 The two player each roll two dice each turn. The difference between the two dice are compared. Whichever player's difference is smallest wins.
